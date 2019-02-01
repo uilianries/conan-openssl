@@ -47,7 +47,7 @@ class OpenSSLConan(ConanFile):
         # https://github.com/conan-community/community/issues/28
         if self.settings.compiler == "Visual Studio" or \
            (os.name == "nt" and tools.cross_building(self.settings)):
-            self.build_requires("strawberryperl/5.26.0@conan/stable")
+            self.build_requires("strawberryperl/5.28.1.1@conan/stable")
             if not self.options.no_asm and self.settings.arch == "x86":
                 self.build_requires("nasm/2.13.01@conan/stable")
 
