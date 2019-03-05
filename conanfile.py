@@ -148,7 +148,7 @@ class OpenSSLConan(ConanFile):
             elif self.settings.arch == "x86_64":
                 target = "%slinux-x86_64" % target_prefix
             elif self.settings.arch == "armv8":  # Thanks @dashaomai!
-                target = "%slinux-aarch64" % target_prefix
+                target = "linux-aarch64"  # there is no debug-linux-aarch64
             elif str(self.settings.arch) in ("ppc64le", "ppc64", "mips64", "sparcv9"):
                 target = "linux-%s" % str(self.settings.arch)
             elif "arm" in self.settings.arch:
