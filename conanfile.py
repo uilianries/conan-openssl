@@ -14,6 +14,7 @@ class OpenSSLConan(ConanFile):
     license = "The current OpenSSL licence is an 'Apache style' license: https://www.openssl.org/source/license.html"
     description = "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured " \
                   "toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols"
+    exports_sources = ['android.patch']
     # https://github.com/openssl/openssl/blob/OpenSSL_1_0_2l/INSTALL
     options = {"no_threads": [True, False],
                "no_zlib": [True, False],
@@ -96,10 +97,7 @@ class OpenSSLConan(ConanFile):
             tools.replace_in_file("./%s/Configure" % self.subfolder, "::-lefence ", "::")
             self.output.info("=====> Options: %s" % config_options_string)
         if self.settings.os == "Android" and self.settings.compiler == "clang":
-            tools.replace_in_file("./openssl-%s/Configure" % self.version, 
-                                '''"android-armv7","gcc:-march=armv7-a -mandroid -I\$(ANDROID_DEV)/include -B\$(ANDROID_DEV)/lib -O3 -fomit-frame-pointer -Wall::-D_REENTRANT::-ldl:BN_LLONG RC4_CHAR RC4_CHUNK DES_INT DES_UNROLL BF_PTR:${armv4_asm}:dlfcn:linux-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",''',
-                                '''"android-armv7","clang:$ENV{'CFLAGS'} -O3 -fomit-frame-pointer -Wall::-D_REENTRANT::-ldl $ENV{'LDFLAGS'}:BN_LLONG RC4_CHAR RC4_CHUNK DES_INT DES_UNROLL BF_PTR:${armv4_asm}:dlfcn:linux-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
-"android-aarch64","clang:-I\$(ANDROID_DEV)/include -B\$(ANDROID_DEV)/lib -O3 -fomit-frame-pointer -Wall::-D_REENTRANT::-ldl:SIXTY_FOUR_BIT_LONG RC4_CHAR RC4_CHUNK DES_INT DES_UNROLL BF_PTR:${aarch64_asm}:linux64:dlfcn:linux-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",''')
+            tools.patch(base_path=self.subfolder, patch_file="android.patch")
 
         for option_name in self.options.values.fields:
             activated = getattr(self.options, option_name)
@@ -167,6 +165,8 @@ class OpenSSLConan(ConanFile):
                 target = "android-aarch64"
             elif self.settings.arch == "x86":
                 target = "android-x86"
+            elif self.settings.arch == "x86_64":
+                target = "android-x86_64"
             elif self.settings.arch == "mips":
                 target = "android-mips"
             else:
