@@ -65,10 +65,6 @@ class OpenSSLConan(ConanFile):
             raise Exception("This recipe only works with Conan client >= 1.0.0")
         del self.settings.compiler.libcxx
 
-        if self.settings.os == "Android":
-            # Build will fail without changing this option
-            self.default_options = self.default_options.replace("no_asm=False", "no_asm=True")
-
     def requirements(self):
         if not self.options.no_zlib:
             self.requires("zlib/1.2.11@conan/stable")
@@ -163,6 +159,7 @@ class OpenSSLConan(ConanFile):
                 raise Exception("Unsupported arch for Linux")
 
         elif self.settings.os == "Android":
+            config_options_string = " no-asm" + config_options_string
             if "armv7" in self.settings.arch:
                 target = "android-armv7"
             elif self.settings.arch == "armv8":
