@@ -8,7 +8,7 @@ from conans.model.version import Version
 
 class OpenSSLConan(ConanFile):
     name = "OpenSSL"
-    version = "1.0.2r"
+    version = "1.0.2s"
     settings = "os", "compiler", "arch", "build_type"
     url = "http://github.com/lasote/conan-openssl"
     license = "The current OpenSSL licence is an 'Apache style' license: https://www.openssl.org/source/license.html"
@@ -57,7 +57,7 @@ class OpenSSLConan(ConanFile):
             tools.download(self.source_tgz, "openssl.tar.gz")
         tools.unzip("openssl.tar.gz")
         tools.check_sha256("openssl.tar.gz",
-                           "ae51d08bba8a83958e894946f15303ff894d75c2b8bbd44a852b64e3fe11d0d6")
+                           "cabd5c9492825ce5bd23f3c3aeed6a97f8142f606d893df216411f07d1abab96")
         os.unlink("openssl.tar.gz")
 
     def configure(self):
