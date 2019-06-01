@@ -85,10 +85,11 @@ class OpenSSLConan(ConanFile):
         config_options_string = ""
         if "zlib" in self.deps_cpp_info.deps:
             zlib_info = self.deps_cpp_info["zlib"]
-            include_path = zlib_info.include_paths[0]
             if self.settings.os == "Windows":
+                include_path = zlib_info.include_paths[0].replace("\\", "/")
                 lib_path = "%s/%s.lib" % (zlib_info.lib_paths[0], zlib_info.libs[0])
             else:
+                include_path = zlib_info.include_paths[0]
                 lib_path = zlib_info.lib_paths[0]  # Just path, linux will find the right file
             config_options_string += ' --with-zlib-include="%s"' % include_path
             config_options_string += ' --with-zlib-lib="%s"' % lib_path
