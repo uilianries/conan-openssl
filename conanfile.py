@@ -149,7 +149,7 @@ class OpenSSLConan(ConanFile):
                     env_build.flags.remove("armv8")
                 if "arm64" in env_build.flags:
                     env_build.flags.remove("arm64")
-                    
+
             extra_flags = ' '.join(env_build.flags)
             extra_flags += " -fPIC" if not self.options.no_fpic else ""
             if self.settings.build_type == "Debug":
@@ -160,9 +160,9 @@ class OpenSSLConan(ConanFile):
                     extra_flags += " no-asm"
         else:
             extra_flags = "--debug" if self.settings.build_type == "Debug" else "--release"
-            extra_flags += " no-shared" if not self.options.shared else " shared"
             if self.options.capieng_dialog:
                 extra_flags += " -DOPENSSL_CAPIENG_DIALOG=1"
+        extra_flags += " shared" if self.options.shared else " no-shared"
         if self.settings.os == "Android":
             # see NOTES.ANDROID
             extra_flags += " -D__ANDROID_API__=%s" % str(self.settings.os.api_level)
