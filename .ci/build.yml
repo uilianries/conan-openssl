@@ -1,0 +1,6 @@
+parameters:
+  python: 'python'
+
+steps:
+  - script: ${{ parameters.python }} build.py
+    displayName: 'Build Conan package'
