@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+
 import os
 import fnmatch
+import glob
 from functools import total_ordering
 from conans.errors import ConanInvalidConfiguration, ConanException
 from conans import ConanFile, AutoToolsBuildEnvironment, tools
@@ -472,11 +474,29 @@ class OpenSSLConan(ConanFile):
                 self._run_make()
                 self._run_make(targets=["install_sw"], parallel=False)
 
+    def _clean_tmp_dir(self, directory):
+        count = 0
+        with tools.chdir(directory):
+            for filename in glob.glob("nm*.tmp"):
+                os.unlink(filename)
+                count = count + 1
+        if count:
+            self.output.info("removed %s temp files in %s" % (count, directory))
+
+    def _clean_tmp(self):
+        if "TMP" in os.environ:
+            self._clean_tmp_dir(os.environ["TMP"])
+        if "TEMP" in os.environ:
+            self._clean_tmp_dir(os.environ["TEMP"])
+        if "TMPDIR" in os.environ:
+            self._clean_tmp_dir(os.environ["TMPDIR"])
+
     def build(self):
         with tools.vcvars(self.settings) if self.settings.compiler == "Visual Studio" else tools.no_op():
             if self._full_version >= "1.1.0":
                 self._create_targets()
             self._make()
+            self._clean_tmp()
 
     @property
     def _win_bash(self):
