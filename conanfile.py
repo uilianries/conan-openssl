@@ -323,8 +323,8 @@ class OpenSSLConan(ConanFile):
     @property
     def _configure_args(self):
         openssldir = self.options.openssldir if self.options.openssldir else os.path.join(self.package_folder, "res")
-        prefix = tools.unix_path(self.package_folder) if self._win_bash else self.package_folder
-        openssldir = tools.unix_path(openssldir) if self._win_bash else openssldir
+        prefix = self.package_folder.replace("\\", "/") if self._win_bash else self.package_folder
+        openssldir = self.package_folder.replace("\\", "/") if self._win_bash else openssldir
         args = ['"%s"' % (self._target if self._full_version >= "1.1.0" else self._ancestor_target),
                 "shared" if self.options.shared else "no-shared",
                 "--prefix=%s" % prefix,
