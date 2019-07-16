@@ -494,7 +494,6 @@ class OpenSSLConan(ConanFile):
     def build(self):
         # TODO (uilian) Only for testing
         if self.settings.os == "Windows":
-            self.run("fsutil.exe volume diskfree %TEMP%")
         with tools.vcvars(self.settings) if self.settings.compiler == "Visual Studio" else tools.no_op():
             if self._full_version >= "1.1.0":
                 self._create_targets()
