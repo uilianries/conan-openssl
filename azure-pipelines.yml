@@ -11,7 +11,6 @@ jobs:
           C:\Python37\python.exe -m ensurepip
           C:\Python37\python.exe -m pip install conan conan-package-tools
           C:\Python37\python.exe build.py
-          fsutil.exe volume diskfree %ConEmuWorkDrive%\
         env:
           CONAN_PASSWORD: $(CONAN_PASSWORD)
           CONAN_REFERENCE: OpenSSL/1.1.1c
@@ -33,7 +32,6 @@ jobs:
           del /f "C:\Program Files\Git\usr\bin\perl.exe"
           pip.exe install conan conan-package-tools
           python.exe build.py
-          fsutil.exe volume diskfree %ConEmuWorkDrive%\
         env:
           CONAN_PASSWORD: $(CONAN_PASSWORD)
           CONAN_REFERENCE: OpenSSL/1.1.1c
