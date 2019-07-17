@@ -299,7 +299,7 @@ jobs:
         env:
           CONAN_PASSWORD: $(CONAN_PASSWORD)
           CONAN_REFERENCE: OpenSSL/1.1.0k
-          CONAN_TOTAL_PAGES: 2
+          CONAN_TOTAL_PAGES: 3
     strategy:
       matrix:
         Visual Studio 12 Page 1:
@@ -308,12 +308,18 @@ jobs:
         Visual Studio 12 Pages 2:
           CONAN_VISUAL_VERSIONS: 12
           CONAN_CURRENT_PAGE: 2
+        Visual Studio 12 Pages 3:
+          CONAN_VISUAL_VERSIONS: 12
+          CONAN_CURRENT_PAGE: 3
         Visual Studio 14 Page 1:
           CONAN_VISUAL_VERSIONS: 14
           CONAN_CURRENT_PAGE: 1
         Visual Studio 14 Page 2:
           CONAN_VISUAL_VERSIONS: 14
-          CONAN_CURRENT_PAGE: 1
+          CONAN_CURRENT_PAGE: 2
+        Visual Studio 14 Page 3:
+          CONAN_VISUAL_VERSIONS: 14
+          CONAN_CURRENT_PAGE: 3
   - job: OpenSSL_1_1_0k
     timeoutInMinutes: 120
     pool:
@@ -329,7 +335,7 @@ jobs:
         env:
           CONAN_PASSWORD: $(CONAN_PASSWORD)
           CONAN_REFERENCE: OpenSSL/1.1.0k
-          CONAN_TOTAL_PAGES: 2
+          CONAN_TOTAL_PAGES: 3
     strategy:
       matrix:
         Visual Studio 16 2019:
@@ -354,6 +360,12 @@ jobs:
           CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
           CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
           CONAN_CURRENT_PAGE: 2
+        MinGW 4.9 dwarf x86 Page 3:
+          IMAGE_NAME: "vs2017-win2016"
+          MINGW_CONFIGURATIONS: "4.9@x86@dwarf2@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 3
         MinGW 4.9 seh x86_64 Page 1:
           IMAGE_NAME: "vs2017-win2016"
           MINGW_CONFIGURATIONS: "4.9@x86_64@seh@posix"
@@ -366,6 +378,12 @@ jobs:
           CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
           CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
           CONAN_CURRENT_PAGE: 2
+        MinGW 4.9 seh x86_64 Page 3:
+          IMAGE_NAME: "vs2017-win2016"
+          MINGW_CONFIGURATIONS: "4.9@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 3
         MinGW 5 dwarf x86 Page 1:
           IMAGE_NAME: "vs2017-win2016"
           MINGW_CONFIGURATIONS: "5@x86@dwarf2@posix"
@@ -378,6 +396,12 @@ jobs:
           CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
           CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
           CONAN_CURRENT_PAGE: 2
+        MinGW 5 dwarf x86 Page 3:
+          IMAGE_NAME: "vs2017-win2016"
+          MINGW_CONFIGURATIONS: "5@x86@dwarf2@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 3
         MinGW 5 seh x86_64 Page 1:
           IMAGE_NAME: "vs2017-win2016"
           MINGW_CONFIGURATIONS: "5@x86_64@seh@posix"
@@ -390,6 +414,12 @@ jobs:
           CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
           CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
           CONAN_CURRENT_PAGE: 2
+        MinGW 5 seh x86_64 Page 3:
+          IMAGE_NAME: "vs2017-win2016"
+          MINGW_CONFIGURATIONS: "5@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 3
         MinGW 6 dwarf x86 Page 1:
           IMAGE_NAME: "vs2017-win2016"
           MINGW_CONFIGURATIONS: "6@x86@dwarf2@posix"
@@ -402,6 +432,12 @@ jobs:
           CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
           CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
           CONAN_CURRENT_PAGE: 2
+        MinGW 6 dwarf x86 Page 3:
+          IMAGE_NAME: "vs2017-win2016"
+          MINGW_CONFIGURATIONS: "6@x86@dwarf2@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 3
         MinGW 6 seh x86_64 Page 1:
           IMAGE_NAME: "vs2017-win2016"
           MINGW_CONFIGURATIONS: "6@x86_64@seh@posix"
@@ -414,6 +450,12 @@ jobs:
           CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
           CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
           CONAN_CURRENT_PAGE: 2
+        MinGW 6 seh x86_64 Page 3:
+          IMAGE_NAME: "vs2017-win2016"
+          MINGW_CONFIGURATIONS: "6@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 3
         MinGW 7 dwarf x86 Page 1:
           IMAGE_NAME: "vs2017-win2016"
           MINGW_CONFIGURATIONS: "7@x86@dwarf2@posix"
@@ -426,6 +468,12 @@ jobs:
           CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
           CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
           CONAN_CURRENT_PAGE: 2
+        MinGW 7 dwarf x86 Page 3:
+          IMAGE_NAME: "vs2017-win2016"
+          MINGW_CONFIGURATIONS: "7@x86@dwarf2@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 3
         MinGW 7 seh x86_64 Page 1:
           IMAGE_NAME: "vs2017-win2016"
           MINGW_CONFIGURATIONS: "7@x86_64@seh@posix"
@@ -438,6 +486,12 @@ jobs:
           CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
           CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
           CONAN_CURRENT_PAGE: 2
+        MinGW 7 seh x86_64 Page 3:
+          IMAGE_NAME: "vs2017-win2016"
+          MINGW_CONFIGURATIONS: "7@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 3
         MinGW 8 dwarf x86 Page 1:
           IMAGE_NAME: "vs2017-win2016"
           MINGW_CONFIGURATIONS: "8@x86@dwarf2@posix"
@@ -450,6 +504,12 @@ jobs:
           CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
           CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
           CONAN_CURRENT_PAGE: 2
+        MinGW 8 dwarf x86 Page 3:
+          IMAGE_NAME: "vs2017-win2016"
+          MINGW_CONFIGURATIONS: "8@x86@dwarf2@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 3
         MinGW 8 seh x86_64 Page 1:
           IMAGE_NAME: "vs2017-win2016"
           MINGW_CONFIGURATIONS: "8@x86_64@seh@posix"
@@ -462,6 +522,12 @@ jobs:
           CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
           CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
           CONAN_CURRENT_PAGE: 2
+        MinGW 8 seh x86_64 Page 3:
+          IMAGE_NAME: "vs2017-win2016"
+          MINGW_CONFIGURATIONS: "8@x86_64@seh@posix"
+          CONAN_BUILD_REQUIRES: "msys2_installer/latest@bincrafters/stable"
+          CONAN_REMOTES: "https://api.bintray.com/conan/bincrafters/public-conan"
+          CONAN_CURRENT_PAGE: 3
 
   - job: OpenSSL_1_1_0j_VS2015
     timeoutInMinutes: 120
