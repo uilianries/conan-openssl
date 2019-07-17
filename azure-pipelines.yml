@@ -6,6 +6,7 @@ jobs:
     steps:
       - template: .ci/install-cmake.yml
       - template: .ci/install-python.yml
+      - template: .ci/configure-hooks.yml
       - script: |
           del /f "C:\Program Files\Git\usr\bin\perl.exe"
           C:\Python37\python.exe -m ensurepip
@@ -28,6 +29,7 @@ jobs:
       - task: UsePythonVersion@0
         inputs:
           versionSpec: '3.7'
+      - template: .ci/configure-hooks.yml
       - script: |
           del /f "C:\Program Files\Git\usr\bin\perl.exe"
           pip.exe install conan conan-package-tools
@@ -291,6 +293,7 @@ jobs:
     steps:
       - template: .ci/install-cmake.yml
       - template: .ci/install-python.yml
+      - template: .ci/configure-hooks.yml
       - script: |
           del /f "C:\Program Files\Git\usr\bin\perl.exe"
           C:\Python37\python.exe -m ensurepip
@@ -328,6 +331,7 @@ jobs:
       - task: UsePythonVersion@0
         inputs:
           versionSpec: '3.7'
+      - template: .ci/configure-hooks.yml
       - script: |
           del /f "C:\Program Files\Git\usr\bin\perl.exe"
           pip.exe install conan conan-package-tools
