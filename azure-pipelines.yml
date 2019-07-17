@@ -11,6 +11,7 @@ jobs:
           del /f "C:\Program Files\Git\usr\bin\perl.exe"
           C:\Python37\python.exe -m ensurepip
           C:\Python37\python.exe -m pip install conan conan-package-tools
+          conan config set hooks.remove_openssl
           C:\Python37\python.exe build.py
         env:
           CONAN_PASSWORD: $(CONAN_PASSWORD)
@@ -33,6 +34,7 @@ jobs:
       - script: |
           del /f "C:\Program Files\Git\usr\bin\perl.exe"
           pip.exe install conan conan-package-tools
+          conan config set hooks.remove_openssl
           python.exe build.py
         env:
           CONAN_PASSWORD: $(CONAN_PASSWORD)
@@ -298,6 +300,7 @@ jobs:
           del /f "C:\Program Files\Git\usr\bin\perl.exe"
           C:\Python37\python.exe -m ensurepip
           C:\Python37\python.exe -m pip install conan conan-package-tools
+          conan config set hooks.remove_openssl
           C:\Python37\python.exe build.py
         env:
           CONAN_PASSWORD: $(CONAN_PASSWORD)
@@ -335,6 +338,7 @@ jobs:
       - script: |
           del /f "C:\Program Files\Git\usr\bin\perl.exe"
           pip.exe install conan conan-package-tools
+          conan config set hooks.remove_openssl
           python.exe build.py
         env:
           CONAN_PASSWORD: $(CONAN_PASSWORD)
