@@ -492,9 +492,6 @@ class OpenSSLConan(ConanFile):
             self._clean_tmp_dir(os.environ["TMPDIR"])
 
     def build(self):
-        if tools.os_info.is_windows:
-            self.output.info("Free Storage")
-            self.run("fsutil.exe volume diskfree %TEMP%")
         with tools.vcvars(self.settings) if self.settings.compiler == "Visual Studio" else tools.no_op():
             if self._full_version >= "1.1.0":
                 self._create_targets()

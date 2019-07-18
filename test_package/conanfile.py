@@ -22,9 +22,6 @@ class DefaultNameConan(ConanFile):
         cmake.build()
 
     def build(self):
-        if tools.os_info.is_windows:
-            self.output.info("Free Storage Test Package")
-            self.run("fsutil.exe volume diskfree %TEMP%")
         self._build_cmake(use_find_package=True)
         self._build_cmake(use_find_package=False)
 
